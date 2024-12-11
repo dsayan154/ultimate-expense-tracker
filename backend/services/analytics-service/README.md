@@ -3,6 +3,27 @@
 ## Overview
 The Analytics Service provides comprehensive financial insights and analysis capabilities for UET. It processes historical data to generate personalized insights, spending patterns, and financial health metrics for both individual users and groups.
 
+## Technical Stack
+- Firebase Cloud Functions (Python)
+- Supabase PostgreSQL with TimescaleDB extension
+- Firebase Pub/Sub for event handling
+- NumPy/Pandas for data analysis
+
+## Deployment
+- Functions deployed via Firebase CLI
+- Environment variables managed through Firebase Config
+- Supabase connection secured via service roles
+- Function triggers:
+  * HTTP triggers for analytics APIs
+  * Scheduled triggers for periodic analysis
+  * Pub/Sub triggers for real-time updates
+
+## Database Schema
+- Leverages TimescaleDB hypertables for time-series data
+- Materialized views for common analytics queries
+- Continuous aggregates for performance
+- RLS policies for data access control
+
 ## Features Targeted
 - Financial insights and dashboards
 - Spending pattern analysis

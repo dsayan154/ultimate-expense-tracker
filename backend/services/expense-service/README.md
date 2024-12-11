@@ -3,6 +3,27 @@
 ## Overview
 The Expense Service is the core service of UET that handles all expense-related operations. It manages expense logging, categorization, tagging, and provides the foundation for expense analysis and budgeting features.
 
+## Technical Stack
+- Firebase Cloud Functions (Golang)
+- Supabase PostgreSQL for data persistence
+- Firebase Pub/Sub for event handling
+- Firebase Storage for receipt images
+
+## Deployment
+- Functions deployed via Firebase CLI
+- Environment variables managed through Firebase Config
+- Supabase connection secured via service roles
+- Function triggers:
+  * HTTP triggers for REST endpoints
+  * Storage triggers for receipt processing
+  * Pub/Sub triggers for async operations
+
+## Database Schema
+- Leverages Supabase RLS policies for security
+- JSONB columns for flexible metadata
+- Materialized views for reporting
+- Database functions for complex operations
+
 ## Features Targeted
 - Basic expense logging and management
 - Categories and tags management

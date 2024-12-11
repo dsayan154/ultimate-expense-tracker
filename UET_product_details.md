@@ -181,22 +181,23 @@ All the key features mentioned above are must-haves, prioritize them as you see 
 
 ## Development Phases
 
-### Phase 0: Design & Architecture (✅ COMPLETED)
+### Phase 0: Design & Architecture (✅ UPDATED)
 1. **Tech Stack Selection**
    - Frontend: React.js, TypeScript, MUI, Workbox
-   - Backend: Golang microservices, Python ML services
-   - Database: PostgreSQL with TimescaleDB
-   - Cache: Redis
-   - Message Queue: Apache Kafka
-   - Infrastructure: Kubernetes, Kong, ArgoCD
-   - Observability: Prometheus, Grafana, Loki, Tempo
+   - Backend: Firebase Cloud Functions (Python/Golang/Node.js/TypeScript)
+   - Database: Supabase PostgreSQL
+   - Cache: [To be decided]
+   - Message Queue: Firebase Pub/Sub
+   - Infrastructure: Firebase Hosting & Functions
+   - Observability: Firebase Performance Monitoring, Crashlytics
 
 2. **Database Design**
-   - PostgreSQL schema design
+   - Supabase PostgreSQL schema design
    - Table relationships and constraints
+   - Row Level Security (RLS) policies
+   - Database functions and triggers
    - Indexes optimization
    - JSONB for flexible data storage
-   - TimescaleDB for time-series analytics
 
 ### Phase 1: Core Infrastructure Setup
 1. **Local Development Environment**

@@ -3,6 +3,27 @@
 ## Overview
 The Group Service manages all group-related functionalities in UET, including group creation, member management, and expense splitting. It serves as the foundation for collaborative financial management features.
 
+## Technical Stack
+- Firebase Cloud Functions (Golang)
+- Supabase PostgreSQL for data persistence
+- Firebase Pub/Sub for event handling
+- JSONB for flexible group settings
+
+## Deployment
+- Functions deployed via Firebase CLI
+- Environment variables managed through Firebase Config
+- Supabase connection secured via service roles
+- Function triggers:
+  * HTTP triggers for REST endpoints
+  * Pub/Sub triggers for settlement processing
+  * Scheduled triggers for recurring settlements
+
+## Database Schema
+- Leverages Supabase RLS policies for security
+- Materialized views for group analytics
+- Database functions for settlement calculations
+- JSONB for flexible group configurations
+
 ## Features Targeted
 - Group creation and management
 - Member invitations and permissions

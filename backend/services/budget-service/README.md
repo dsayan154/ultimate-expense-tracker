@@ -1,7 +1,27 @@
 # Budget Service
 
 ## Overview
-The Budget Service manages personal and group budgets in the Ultimate Expense Tracker (UET) application. It handles budget creation, tracking, notifications, and the gamification aspects of budget adherence.
+The Budget Service manages personal and group budgets in UET. Implemented as Firebase Cloud Functions, it handles budget creation, tracking, notifications, and gamification aspects.
+
+## Technical Stack
+- Firebase Cloud Functions (Golang)
+- Supabase PostgreSQL for data persistence
+- Firebase Pub/Sub for event handling
+- JSONB for flexible budget rules storage
+
+## Deployment
+- Functions deployed via Firebase CLI
+- Environment variables managed through Firebase Config
+- Supabase connection secured via service roles
+- Function triggers:
+  * HTTP triggers for REST endpoints
+  * Pub/Sub triggers for async operations
+  * Scheduled triggers for periodic checks
+
+## Database Schema
+- Leverages Supabase RLS policies for security
+- Materialized views for performance
+- Database functions for complex operations
 
 ## Features Targeted
 - Personal budget management
