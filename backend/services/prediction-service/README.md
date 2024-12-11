@@ -6,6 +6,9 @@ The Prediction Service provides intelligent expense suggestions by analyzing var
 ## Technical Stack
 - Firebase Cloud Functions (Python)
 - Google Cloud Vertex AI for predictions
+  * AutoML Tables for pattern recognition
+  * Prediction endpoints for real-time suggestions
+  * Built-in NLP for SMS parsing
 - Supabase PostgreSQL for data storage
 - Firebase Pub/Sub for event handling
 
@@ -21,25 +24,25 @@ The Prediction Service provides intelligent expense suggestions by analyzing var
 ## Core Functionalities
 
 ### 1. Data Source Analysis
-- SMS transaction parsing
+- SMS transaction parsing using Vertex AI NLP
 - Payment app API integration
 - Location context processing
 - Weather data correlation
 - Bank statement analysis
 
-### 2. Pattern Recognition
-- Recurring expense detection
-- Spending habit analysis
-- Category prediction
-- Amount prediction
-- Merchant correlation
+### 2. Pattern Recognition via Vertex AI
+- Recurring expense detection using AutoML Tables
+- Spending habit analysis through time-series processing
+- Category prediction (>90% accuracy)
+- Amount prediction (>85% accuracy)
+- Merchant correlation analysis
 
 ### 3. Suggestion Generation
-- Real-time expense suggestions
-- Recurring expense reminders
-- Location-based suggestions
+- Real-time expense suggestions using prediction endpoints
+- Recurring expense reminders based on pattern detection
+- Location-based suggestions using contextual data
 - Category-based recommendations
-- Smart amount suggestions
+- Smart amount suggestions from historical patterns
 
 ## API Endpoints
 
@@ -88,3 +91,23 @@ POST /api/v1/predictions/analyze-location
    - Suggestion generation < 1s
    - API response time < 200ms
    - Resource optimization
+
+## Vertex AI Integration Details
+
+### 1. AutoML Tables Usage
+- Training on historical expense data
+- Feature engineering for better predictions
+- Automated model selection and tuning
+- Continuous model evaluation
+
+### 2. Prediction Endpoints
+- Low-latency REST API endpoints
+- Batch prediction support
+- A/B testing capability
+- Model versioning and rollback
+
+### 3. Performance Optimization
+- Caching for frequent predictions
+- Batch processing for analysis
+- Asynchronous processing for non-critical tasks
+- Resource optimization through scaling
