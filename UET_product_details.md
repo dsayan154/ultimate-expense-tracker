@@ -199,17 +199,17 @@ All the key features mentioned above are must-haves, prioritize them as you see 
    - Indexes optimization
    - JSONB for flexible data storage
 
-### Phase 1: Core Infrastructure Setup
-1. **Local Development Environment**
-   - KIND cluster setup
-   - ArgoCD installation
-   - Kong API Gateway
-   - Observability stack
+### Phase 1: Development Environment Setup
+1. **Firebase Setup**
+   - Firebase project creation
+   - Firebase CLI installation
+   - Local emulator setup
+   - Environment configuration
 
-2. **CI/CD Pipeline**
+2. **CI/CD Pipeline** (To be revisited later)
    - GitHub Actions workflows
-   - Docker image builds
-   - ArgoCD configurations
+   - Firebase deployment automation
+   - Environment management
 
 ### Phase 2: Core Services Development
 1. **Backend Services (Golang)**

@@ -162,14 +162,14 @@ INSERT INTO split_expenses (group_id, expense_id, total_amount, split_type, stat
 -- All Split Expense Shares
 INSERT INTO split_expense_shares (split_expense_id, user_id, amount, percentage, status) VALUES
 -- Roommates dinner (equal split)
-(1, 1, 30.00, 25, 'PENDING'),
-(1, 2, 30.00, 25, 'PENDING'),
-(1, 3, 30.00, 25, 'PENDING'),
-(1, 4, 30.00, 25, 'PENDING'),
+(1, 1, 30.00, 'PENDING'),
+(1, 2, 30.00, 'PENDING'),
+(1, 3, 30.00, 'PENDING'),
+(1, 4, 30.00, 'PENDING'),
 -- Family grocery (percentage split)
-(2, 4, 100.00, 50, 'PAID'),
-(2, 5, 60.00, 30, 'PAID'),
-(2, 6, 40.00, 20, 'PENDING');
+(2, 4, 100.00, 'PAID'),
+(2, 5, 60.00, 'PAID'),
+(2, 6, 40.00, 'PENDING');
 
 -- All Loan Installments
 INSERT INTO loan_installments (virtual_account_id, amount, due_date, is_paid, reminder_days) VALUES

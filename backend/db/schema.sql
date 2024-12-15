@@ -217,8 +217,7 @@ CREATE TABLE split_expense_shares (
     split_expense_id INTEGER REFERENCES split_expenses(id),
     user_id INTEGER REFERENCES users(id),
     amount DECIMAL(12,2) NOT NULL,
-    percentage DECIMAL(5,2),
-    status VARCHAR(20) DEFAULT 'PENDING', -- 'PENDING', 'PAID'
+    status VARCHAR(20) DEFAULT 'PENDING',
     settlement_date TIMESTAMP WITH TIME ZONE,
     settlement_reference TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -226,6 +225,40 @@ CREATE TABLE split_expense_shares (
     CONSTRAINT valid_share_status CHECK (status IN ('PENDING', 'PAID')),
     CONSTRAINT positive_share_amount CHECK (amount > 0)
 );
+
+-- Triggers and functions for split expense shares
+CREATE OR REPLACE FUNCTION validate_split_shares()
+RETURNS TRIGGER AS $$
+DECLARE
+    total_shares DECIMAL(12,2);
+    split_total DECIMAL(12,2);
+BEGIN
+    -- Get total split amount
+    SELECT amount INTO split_total
+    FROM split_expenses
+    WHERE id = NEW.split_expense_id;
+
+    -- Calculate sum of shares
+    SELECT COALESCE(SUM(amount), 0) INTO total_shares
+    FROM split_expense_shares
+    WHERE split_expense_id = NEW.split_expense_id;
+
+    -- Add new share amount
+    total_shares := total_shares + NEW.amount;
+
+    -- Validate total
+    IF total_shares > split_total THEN
+        RAISE EXCEPTION 'Sum of shares (%) exceeds total split amount (%)', 
+            total_shares, split_total;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER check_split_shares
+BEFORE INSERT OR UPDATE ON split_expense_shares
+FOR EACH ROW EXECUTE FUNCTION validate_split_shares();
 
 -- Notifications table
 CREATE TABLE notifications (
